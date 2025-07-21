@@ -23,8 +23,12 @@ def load_project_config(path):
 
 def main():
     parser = argparse.ArgumentParser(description="AI Engineering Assistant")
-    parser.add_argument('--project-config', required=True, help='Path to project config file')
+    # parser.add_argument('--project-config', required=True, help='Path to project config file')
+    parser.add_argument('--project-config', help='Path to project config file')
+    parser.add_argument('--list-projects', action='store_true', help='List known project configs')
+    parser.add_argument('--use-project', help='Use a named project from project_configs/')
     args = parser.parse_args()
+    
 
     try:
         config = load_project_config(args.project_config)
