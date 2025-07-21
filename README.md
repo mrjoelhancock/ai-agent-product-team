@@ -17,3 +17,10 @@ Example config (see `project_configs/example_project.json`):
   "language": "python",
   "frameworks": ["flask", "sqlite", "chart.js"]
 }
+```
+
+### Usage
+
+```bash
+python main.py --project-config project_configs/example_project.json
+```
