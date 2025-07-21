@@ -6,6 +6,7 @@ import json
 import yaml
 from utils.openai_wrapper import ask_gpt
 from roles.clarify import clarify_project
+from roles.planner import plan_tasks
 from utils.files import save_to_memory
 
 def load_project_config(path):
