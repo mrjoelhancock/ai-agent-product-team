@@ -5,7 +5,8 @@ import os
 import json
 import yaml
 from utils.openai_wrapper import ask_gpt
-from roles.clarify import clarify_requirements
+from roles.clarify import clarify_project
+
 
 def load_project_config(path):
     if not os.path.exists(path):
