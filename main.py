@@ -41,12 +41,22 @@ def main():
         if user_input.lower() in ['exit', 'quit']:
             break
 
+        # Clarify project requirements
         clarified = clarify_project(user_input, config)
         print("\n📝 Clarified Requirements:\n")
         print(clarified)
         print("\n---\n")
         
+        # Save it
         save_to_memory(config["project_name"], "clarified_project.md", clarified)
+        
+        # Plan work from clarified text
+        work_plan = plan_tasks(clarified, config)
+        print("\n📋 Work Plan:\n")
+        print(work_plan)
+        
+        # Save it too
+        save_to_memory(config["project_name"], "work_plan.md", work_plan)
 
 if __name__ == '__main__':
     main()
