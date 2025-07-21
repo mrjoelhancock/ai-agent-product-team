@@ -1,0 +1,8 @@
+{
+  "project_name": "example-project",
+  "description": "An example configuration for a Python web project.",
+  "documentation_path": "README.md",
+  "code_path": ".",
+  "language": "python",
+  "frameworks": ["flask", "sqlite", "chart.js"]
+}
