@@ -6,6 +6,7 @@ import json
 import yaml
 from utils.openai_wrapper import ask_gpt
 from roles.clarify import clarify_project
+from utils.files import save_to_memory
 
 def load_project_config(path):
     if not os.path.exists(path):
@@ -43,6 +44,8 @@ def main():
         print("\n📝 Clarified Requirements:\n")
         print(clarified)
         print("\n---\n")
+        
+        save_to_memory(config["project_name"], "clarified_project.md", clarified)
 
 if __name__ == '__main__':
     main()
