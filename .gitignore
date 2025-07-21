@@ -1,3 +1,7 @@
+# Ignore real project configs but keep folder
+project_configs/*
+!project_configs/example_project.json
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[codz]
