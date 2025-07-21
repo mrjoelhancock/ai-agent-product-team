@@ -33,6 +33,7 @@ python main.py --project-config project_configs/example_project.json
 
 from setuptools import setup
 
+```
 setup(
     name='mydevagent',
     version='0.1',
@@ -44,24 +45,39 @@ setup(
         ],
     },
 )
+```
 
 #### Step 2: Install it as an editable local package
+
+```
 pip install --editable .
+```
 
 #### Step 3: Now use it like a normal CLI tool
+
+```
 mydevagent --list-projects
 mydevagent --use-project caffeine-tracker
+```
 
 ### Option 2: : Create a Shell Wrapper Script (Quick & Dirty)
 
 #### Step 1: Create a shell script somewhere on your PATH
 #### File: ~/bin/mydevagent (or wherever you like)
 
+```
 #!/bin/bash
 python /full/path/to/ai-engineering-agent/main.py "$@"
+```
 
 #### Step 2: Make it executable
+
+```
 chmod +x ~/bin/mydevagent
+```
 
 #### Step 3: Run it like a CLI tool
+
+```
 mydevagent --list-projects
+```
