@@ -7,7 +7,6 @@ import yaml
 from utils.openai_wrapper import ask_gpt
 from roles.clarify import clarify_project
 
-
 def load_project_config(path):
     if not os.path.exists(path):
         raise FileNotFoundError(f"Config file not found: {path}")
@@ -40,7 +39,7 @@ def main():
         if user_input.lower() in ['exit', 'quit']:
             break
 
-        clarified = clarify_requirements(user_input, config)
+        clarified = clarify_project(user_input, config)
         print("\n📝 Clarified Requirements:\n")
         print(clarified)
         print("\n---\n")
