@@ -4,10 +4,13 @@ import argparse
 import os
 import json
 import yaml
-from utils.openai_wrapper import ask_gpt
+
 from roles.clarify import clarify_project
 from roles.planner import plan_tasks
-from utils.files import save_to_memory
+from utils.files import save_to_memory, list_projects, load_session, save_session, clear_session
+from core.action_manager import perform_action
+
+SESSION_FILE = ".session.json"
 
 def load_project_config(path):
     if not os.path.exists(path):
@@ -26,9 +29,16 @@ def main():
     parser.add_argument('--project-config', help='Path to project config file')
     parser.add_argument('--list-projects', action='store_true', help='List known project configs')
     parser.add_argument('--use-project', help='Use a named project from project_configs/')
+    parser.add_argument('--exit-project', action='store_true', help='Clear the current project session')
     args = parser.parse_args()
-    
-    # --list-projects mode
+
+    # --exit-project: clear session and exit
+    if args.exit_project:
+        clear_session()
+        print("🧹 Project session cleared.")
+        return
+
+    # --list-projects: show known configs and exit
     if args.list_projects:
         projects = list_projects()
         print("\n📁 Available Projects:")
@@ -36,7 +46,7 @@ def main():
             print(f"• {name} → {path}")
         return
 
-    # --use-project mode: resolve project_config path
+    # --use-project: resolve and save to session
     if args.use_project:
         projects = list_projects()
         match = next((p for p in projects if p[0] == args.use_project), None)
@@ -44,7 +54,20 @@ def main():
             print(f"❌ Project '{args.use_project}' not found.")
             return
         args.project_config = match[1]
+        save_session(args.project_config)
 
+    # No config explicitly passed: try to load from session
+    if not args.project_config:
+        session = load_session()
+        if session:
+            args.project_config = session.get("project_config")
+
+    # Final fallback: if still no project config, fail
+    if not args.project_config:
+        print("❌ No project selected. Use --use-project <name> or --project-config <path>.")
+        return
+
+    # Load selected project config
     try:
         config = load_project_config(args.project_config)
     except Exception as e:
@@ -76,6 +99,17 @@ def main():
         
         # Save it too
         save_to_memory(config["project_name"], "work_plan.md", work_plan)
+
+        # Perform a Slack notification action (if configured)
+        try:
+            perform_action(
+                "send_message",
+                config,
+                tool_name="slack",
+                message=f"📣 Project '{config['project_name']}' clarified and planned."
+            )
+        except Exception as e:
+            print(f"⚠️ Slack message failed: {e}")
 
 if __name__ == '__main__':
     main()
