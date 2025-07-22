@@ -4,5 +4,12 @@
   "documentation_path": "README.md",
   "code_path": ".",
   "language": "python",
-  "frameworks": ["flask", "sqlite", "chart.js"]
+  "frameworks": ["flask", "sqlite", "chart.js"],
+  "tools": {
+    "slack": {
+      "adapter": {
+        "webhook_url": "https://hooks.slack.com/services/your/real/url"
+      }
+    }
+  }
 }
