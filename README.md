@@ -29,6 +29,14 @@ Job Tasks
 Job Task => (performed by) Action => (with) Tool => (configured for use in Project via) Adapter
 ```
 
+Agent planning
+
+```
+1. To carry out this task, what is the best Action?
+2. To perform this Action, what is the best Tool?
+3. Ensure the tool is correctly configured for the Project.
+``
+
 ## 🧠 Project Configs
 
 This AI agent uses JSON-based project config files stored in the `project_configs/` folder.
