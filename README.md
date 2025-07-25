@@ -1,5 +1,29 @@
 # ai-agent-product-team
 
+Prototype for an agent which can carry out software development tasks with some level of autonomy.
+
+Works against "Jobs" to achieve outcomes.
+
+Carries out "Actions" using "Tools" that help it do things via the Internet.
+
+Tools are configured for use in Projects via "Adapters". Adapters are the configurations that allow use in a project context.
+
+```
+Job = Write Python script to print a random number. Commit the script to code repo X. Email Y when done.
+```
+
+Agent uses LLM to determine tasks required to achieve Job. Create a plan for working on the job.
+
+```
+Job Tasks
+-
+- Write Python script which prints a random number.
+- Create new branch for script in code repo C.
+- Commit the script to code repo C.
+- Componse subject and body for email to send to Y.
+- Send email to Y with content ""...
+```
+
 ## 🧠 Project Configs
 
 This AI agent uses JSON-based project config files stored in the `project_configs/` folder.
