@@ -34,7 +34,7 @@ Agent planning
 1. To carry out this task, what is the best Action?
 2. To perform this Action, what is the best Tool?
 3. Ensure the tool is correctly configured for the Project.
-``
+```
 
 ## 🧠 Project Configs
 
