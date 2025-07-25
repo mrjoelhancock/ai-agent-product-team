@@ -16,7 +16,6 @@ Agent uses LLM to determine tasks required to achieve Job. Create a plan for wor
 
 ```
 Job Tasks
--
 - Write Python script which prints a random number.
 - Create new branch for script in code repo C.
 - Commit the script to code repo C.
