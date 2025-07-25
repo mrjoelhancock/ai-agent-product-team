@@ -21,7 +21,12 @@ Job Tasks
 - Create new branch for script in code repo C.
 - Commit the script to code repo C.
 - Componse subject and body for email to send to Y.
-- Send email to Y with content ""...
+- Send email to Y with content from previous task.
+```
+
+Job Tasks
+```
+Job Task => (performed by) Action => (with) Tool => (configured for use in Project via) Adapter
 ```
 
 ## 🧠 Project Configs
