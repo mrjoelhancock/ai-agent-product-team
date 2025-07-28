@@ -6,10 +6,10 @@ Prototype for an agent which can carry out software development tasks with some 
 
 to add new DB tables run the below.
 
-'''bash
+```bash
 export DATABASE_URL="..."
 python db/init_db.py
-'''
+```
 
 If we need to alter existikg tables we may need something like Alwmbic to handle migrations.
 
