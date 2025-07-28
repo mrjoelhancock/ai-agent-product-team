@@ -2,6 +2,19 @@
 
 Prototype for an agent which can carry out software development tasks with some level of autonomy.
 
+## Local development
+
+to add new DB tables run the below.
+
+'''bash
+export DATABASE_URL="..."
+python db/init_db.py
+'''
+
+If we need to alter existikg tables we may need something like Alwmbic to handle migrations.
+
+---
+
 Works against "Jobs" to achieve outcomes.
 
 Carries out "Actions" using "Tools" that help it do things via the Internet.
